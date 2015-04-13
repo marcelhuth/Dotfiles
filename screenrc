@@ -1,0 +1,43 @@
+########################################
+# .screenrc
+#
+# Version: 0.1
+# (c) Marcel Huth, 13-Apr-2011
+##########################################
+
+# 256 color support
+term xterm
+termcapinfo xterm|xterm-color|xterm-16color|xterm-88color|xterm-256color|rxvt* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+attrcolor b ".I"
+defbce "on"
+
+# INSERT COMMENT HERE
+shell -${SHELL}
+
+# Do not show a startup message
+startup_message off
+
+# Activate vBell and set the message
+vbell on
+vbell_msg "[ DING ]"
+
+# INSERT COMMENT HERE
+defscrollback 30000
+
+# Display String for activity in hidden windows
+activity 'Activity in Window %n'
+
+# If a session hangs up screen will detach it and not close the session
+autodetach on
+
+# Bell message
+bell_msg 'Bell in window %n'
+
+# Display messages always in the last line
+hardstatus on
+hardstatus alwayslastline "%-=%{= kd}[ %{= kc}%H%{= kd} | %{= kc}%l%{= kd} | %{= kc}%Y-%m-%d %c%{= kd} ]"
+
+# Always show caption
+caption always "%{= wk} %-w%{= KW} [%n %t] %{-}%+w %= "
+
