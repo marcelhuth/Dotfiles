@@ -103,6 +103,9 @@ EOT
 # Path definition
 export PATH=/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/git/bin:$PATH
 
+# Complete additional commands
+complete -C '/Library/Frameworks/Python.framework/Versions/3.4/bin/aws_completer' aws
+
 # Determine if there is a Python virtualenv and present the details, if there is one.
 function python_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
