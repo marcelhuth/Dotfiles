@@ -119,7 +119,7 @@ function git_prompt_vars() {
   PROMPT_DIRTY=${BRed}'✗'${Color_Off}
   PROMPT_CLEAN=${BGreen}'✓'${Color_Off}
   PROMPT_PREFIX='|'
-  PROMPT_SUFFIX=${BWhite}'|'
+  PROMPT_SUFFIX='|'
   GIT_BEHIND_CHAR=${Red}'↓'
   GIT_AHEAD_CHAR=${Green}'↑'
   GIT_STASH=''
@@ -148,7 +148,7 @@ function git_prompt_vars() {
     [[ "${stash_count}" -gt 0 ]] && GIT_STASH="{${stash_count}}"
 
 
-    GPS="["$BRANCH$GIT_STATE$GIT_AHEAD$GIT_BEHIND$GIT_STASH"${BWhite}] "
+    GPS="["$BRANCH$GIT_STATE$GIT_AHEAD$GIT_BEHIND$GIT_STASH"] "
   else
     GPS=""
   fi
@@ -159,10 +159,10 @@ prompt() {
   python_virtualenv
   git_prompt_vars
   case $(id -u) in
-#    0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
+#   0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
     0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
     ;;
-#    *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
+#   *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
     *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
     ;;
   esac

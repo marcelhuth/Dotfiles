@@ -36,7 +36,7 @@ bell_msg 'Bell in window %n'
 
 # Display messages always in the last line
 hardstatus on
-hardstatus alwayslastline "%-=%{= kd}[ %{= kc}%H%{= kd} | %{= kc}%l%{= kd} | %{= kc}%Y-%m-%d %c%{= kd} ]"
+hardstatus alwayslastline "%{= kd}%=%{= kd}[ %{= kc}%H%{= kd} | %{= kc}%l%{= kd} | %{= kc}%Y-%m-%d %c%{= kd} ]"
 
 # Always show caption
 caption always "%{= wk} %-w%{= KW} [%n %t] %{-}%+w %= "
