@@ -159,11 +159,11 @@ prompt() {
   python_virtualenv
   git_prompt_vars
   case $(id -u) in
-    0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
-#    0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
+#   0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
+    0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
     ;;
-    *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
-#    *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
+#   *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
+    *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
     ;;
   esac
 }
