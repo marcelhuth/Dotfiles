@@ -13,7 +13,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	# Do something under Mac OS X platform
 	#Add colors
 	export CLICOLOR=1
-	export LSCOLORS=GxFxCxDxBxegedabagaced
+	export LSCOLORS=exfxcxdxbxegedabagacad
 elif [ $(uname) = "Linux" ]; then
 	export LS_OPTIONS=' --color=auto'
 	export GREP_OPTIONS='--color=auto'
