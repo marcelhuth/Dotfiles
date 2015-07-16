@@ -1,0 +1,9 @@
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[user]
+	name = Marcel Huth
+	email = marcelhuth@users.noreply.github.com
+[credential]
+	helper = osxkeychain

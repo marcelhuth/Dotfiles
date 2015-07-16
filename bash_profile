@@ -1,5 +1,23 @@
 # .bash_profile
 # Sets some stuff to make things work better for me.
+# Most stuff stolen from trulleberg@github
+
+# TODO: Implement check if aws CLI is installed
+# TODO: PYTHON_VIRTUALENV variable does not work, actually
+#       the cursor is not moved to start of line when pressing
+#       Ctrl+A. Probably it's a bash thing with the string.
+# TODO: Check if git is installed before using it.
+
+# Color settings
+if [ "$(uname)" == "Darwin" ]; then
+	# Do something under Mac OS X platform
+	#Add colors
+	export CLICOLOR=1
+	export LSCOLORS=GxFxCxDxBxegedabagaced
+elif [ $(uname) = "Linux" ]; then
+	export LS_OPTIONS=' --color=auto'
+	export GREP_OPTIONS='--color=auto'
+fi
 
 # Define color variables
 # Reset
@@ -79,7 +97,11 @@ On_IWhite='\e[0;107m'   # White
 alias ls='ls -G'
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias ll='ls -FGlAhp'
+alias ll='ls -FGlrahp'
+alias df='df -h'
+alias vi='vim'
+alias ..='cd ..' # Go up one directory
+alias ...='cd ../..' # Go up two directories
 
 # New Functions for the Bash
 #   cdf:  'Cd's to frontmost window of MacOS Finder
@@ -101,9 +123,11 @@ EOT
 }
 
 # Path definition
+# Works for the Mac only
 export PATH=/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/git/bin:$PATH
 
 # Complete additional commands
+# Works for the Mac only
 complete -C '/Library/Frameworks/Python.framework/Versions/3.4/bin/aws_completer' aws
 
 # Determine if there is a Python virtualenv and present the details, if there is one.
