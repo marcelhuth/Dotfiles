@@ -3,9 +3,6 @@
 # Most stuff stolen from trulleberg@github
 
 # TODO: Implement check if aws CLI is installed
-# TODO: PYTHON_VIRTUALENV variable does not work, actually
-#       the cursor is not moved to start of line when pressing
-#       Ctrl+A. Probably it's a bash thing with the string.
 # TODO: Check if git is installed before using it.
 
 # Color settings
@@ -19,79 +16,29 @@ elif [ $(uname) = "Linux" ]; then
 	export GREP_OPTIONS='--color=auto'
 fi
 
-# Define color variables
-# Reset
-Color_Off='\e[0m'       # Text Reset
-
-# Regular Colors
-Black='\e[0;30m'        # Black
-Red='\e[0;31m'          # Red
-Green='\e[0;32m'        # Green
-Yellow='\e[0;33m'       # Yellow
-Blue='\e[0;34m'         # Blue
-Purple='\e[0;35m'       # Purple
-Cyan='\e[0;36m'         # Cyan
-White='\e[0;37m'        # White
-
-# Bold
-BBlack='\e[1;30m'       # Black
-BRed='\e[1;31m'         # Red
-BGreen='\e[1;32m'       # Green
-BYellow='\e[1;33m'      # Yellow
-BBlue='\e[1;34m'        # Blue
-BPurple='\e[1;35m'      # Purple
-BCyan='\e[1;36m'        # Cyan
-BWhite='\e[1;37m'       # White
-
-# Underline
-UBlack='\e[4;30m'       # Black
-URed='\e[4;31m'         # Red
-UGreen='\e[4;32m'       # Green
-UYellow='\e[4;33m'      # Yellow
-UBlue='\e[4;34m'        # Blue
-UPurple='\e[4;35m'      # Purple
-UCyan='\e[4;36m'        # Cyan
-UWhite='\e[4;37m'       # White
-
-# Background
-On_Black='\e[40m'       # Black
-On_Red='\e[41m'         # Red
-On_Green='\e[42m'       # Green
-On_Yellow='\e[43m'      # Yellow
-On_Blue='\e[44m'        # Blue
-On_Purple='\e[45m'      # Purple
-On_Cyan='\e[46m'        # Cyan
-On_White='\e[47m'       # White
-
-# High Intensity
-IBlack='\e[0;90m'       # Black
-IRed='\e[0;91m'         # Red
-IGreen='\e[0;92m'       # Green
-IYellow='\e[0;93m'      # Yellow
-IBlue='\e[0;94m'        # Blue
-IPurple='\e[0;95m'      # Purple
-ICyan='\e[0;96m'        # Cyan
-IWhite='\e[0;97m'       # White
-
-# Bold High Intensity
-BIBlack='\e[1;90m'      # Black
-BIRed='\e[1;91m'        # Red
-BIGreen='\e[1;92m'      # Green
-BIYellow='\e[1;93m'     # Yellow
-BIBlue='\e[1;94m'       # Blue
-BIPurple='\e[1;95m'     # Purple
-BICyan='\e[1;96m'       # Cyan
-BIWhite='\e[1;97m'      # White
-
-# High Intensity backgrounds
-On_IBlack='\e[0;100m'   # Black
-On_IRed='\e[0;101m'     # Red
-On_IGreen='\e[0;102m'   # Green
-On_IYellow='\e[0;103m'  # Yellow
-On_IBlue='\e[0;104m'    # Blue
-On_IPurple='\e[0;105m'  # Purple
-On_ICyan='\e[0;106m'    # Cyan
-On_IWhite='\e[0;107m'   # White
+# ANSI color codes
+# Has to be ANSI codes! '\e[...' does not work with
+# newline in bash. That would cause Ctrl+A to not work properly
+RS="\[\033[0m\]"    # reset
+HC="\[\033[1m\]"    # hicolor
+UL="\[\033[4m\]"    # underline
+INV="\[\033[7m\]"   # inverse background and foreground
+FBLK="\[\033[30m\]" # foreground black
+FRED="\[\033[31m\]" # foreground red
+FGRN="\[\033[32m\]" # foreground green
+FYEL="\[\033[33m\]" # foreground yellow
+FBLE="\[\033[34m\]" # foreground blue
+FMAG="\[\033[35m\]" # foreground magenta
+FCYN="\[\033[36m\]" # foreground cyan
+FWHT="\[\033[37m\]" # foreground white
+BBLK="\[\033[40m\]" # background black
+BRED="\[\033[41m\]" # background red
+BGRN="\[\033[42m\]" # background green
+BYEL="\[\033[43m\]" # background yellow
+BBLE="\[\033[44m\]" # background blue
+BMAG="\[\033[45m\]" # background magenta
+BCYN="\[\033[46m\]" # background cyan
+BWHT="\[\033[47m\]" # background white
 
 # Alias definitions
 alias ls='ls -G'
@@ -135,17 +82,17 @@ function python_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
     PYTHON_VIRTUALENV=""
   else
-    PYTHON_VIRTUALENV="[`basename $VIRTUAL_ENV`]"
+    PYTHON_VIRTUALENV="[`basename $VIRTUAL_ENV`] "
   fi
 }
 
 function git_prompt_vars() {
-  PROMPT_DIRTY=${BRed}'✗'${Color_Off}
-  PROMPT_CLEAN=${BGreen}'✓'${Color_Off}
+  PROMPT_DIRTY=${FRED}'✗'${RS}
+  PROMPT_CLEAN=${FGRN}'✓'${RS}
   PROMPT_PREFIX='|'
   PROMPT_SUFFIX='|'
-  GIT_BEHIND_CHAR=${Red}'↓'
-  GIT_AHEAD_CHAR=${Green}'↑'
+  GIT_BEHIND_CHAR=${FRED}'↓'
+  GIT_AHEAD_CHAR=${FGRN}'↑'
   GIT_STASH=''
   GIT_AHEAD=''
   GIT_BEHIND=''
@@ -172,7 +119,7 @@ function git_prompt_vars() {
     [[ "${stash_count}" -gt 0 ]] && GIT_STASH="{${stash_count}}"
 
 
-    GPS="["$BRANCH$GIT_STATE$GIT_AHEAD$GIT_BEHIND$GIT_STASH${Color_Off}"] "
+    GPS="[$BRANCH$GIT_STATE$GIT_AHEAD$GIT_BEHIND$GIT_STASH${RS}] "
   else
     GPS=""
   fi
@@ -183,11 +130,11 @@ prompt() {
   python_virtualenv
   git_prompt_vars
   case $(id -u) in
-#   0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
-    0) PS1="\n${Color_Off}(\!) ${BRed}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
+    0) PS1="\n${RS}(\!) ${FRED}\u${RS}@\h $GPS${FCYN}\w${RS}\n${FMAG}$PYTHON_VIRTUALENV${RS}\$ "
+#   0) PS1="\n${RS}(\!) ${BRed}\u${RS}@\h $GPS${Cyan}\w${RS}\n\$ "
     ;;
-#   *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n${Purple}$PYTHON_VIRTUALENV${Color_Off}\$ "
-    *) PS1="\n${Color_Off}(\!) ${Green}\u${Color_Off}@\h $GPS${Cyan}\w${Color_Off}\n\$ "
+    *) PS1="\n${RS}(\!) ${FGRN}\u${RS}@\h $GPS${FCYN}\w${RS}\n${FMAG}$PYTHON_VIRTUALENV${RS}# "
+#   *) PS1="\n${RS}(\!) ${Green}\u${RS}@\h $GPS${Cyan}\w${RS}\n\$ "
     ;;
   esac
 }
