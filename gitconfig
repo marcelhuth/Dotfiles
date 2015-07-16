@@ -5,5 +5,3 @@
 [user]
 	name = Marcel Huth
 	email = marcelhuth@users.noreply.github.com
-[credential]
-	helper = osxkeychain
