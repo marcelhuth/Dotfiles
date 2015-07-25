@@ -17,3 +17,5 @@
 ._*
 Thumbs.db
 Desktop.ini
+# NERDtree temp files
+.netrwhist
