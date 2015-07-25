@@ -1,0 +1,19 @@
+# Marcel's gitignore list
+#
+# Apple files
+.AppleDouble
+.DS_Store
+.LSOverride
+.AppleDB
+.AppleDesktop
+.apdisk
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+# Windows files
+._*
+Thumbs.db
+Desktop.ini
