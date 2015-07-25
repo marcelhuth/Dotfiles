@@ -1,6 +1,12 @@
 # .bash_profile
+#
+# Marcel's bash_profile
+#
 # Sets some stuff to make things work better for me.
-# Most stuff stolen from trulleberg@github
+#
+# Based on:
+#  https://github.com/trulleberg/Dotfiles
+#  https://github.com/mathiasbynens/dotfiles
 
 # TODO: Implement check if aws CLI is installed
 # TODO: Check if git is installed before using it.
@@ -44,7 +50,7 @@ BWHT="\[\033[47m\]" # background white
 alias ls='ls -G'
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias ll='ls -FGlrahp'
+alias ll='ls -FGlahp'
 alias df='df -h'
 alias vi='vim'
 alias ..='cd ..' # Go up one directory
