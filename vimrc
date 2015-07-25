@@ -55,6 +55,33 @@ map <silent> <C-n> :NERDTreeToggle<CR>
 " Close vim if NERDTree is the last windows
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" ---------------------------
+" Theme
+" ---------------------------
+" Support for 256 colors
+set t_Co=256
+" Enable syntax highlighting
+syntax enable
+" Light background for Solarized theme
+set background=light
+colorscheme solarized
+
+" ---------------------------
+" General Settings
+" ---------------------------
+" Remember the last 1000 lines as history
+set history=1000
+" Support all three, in this order
+set ffs=unix,mac,dos
+" Remove this chars as word delimiters
+set isk+=_,$,@,%,#
+" Leave the cursor where it was
+set nosol
+
+" ---------------------------
+" UI Settings
+" ---------------------------
+
 set autoindent
 set smartindent
 
@@ -74,10 +101,6 @@ set hls
 set incsearch
 
 set number
-
-set t_Co=256
-syntax enable
-colorscheme wombat256mod
 
 set display=lastline
 
