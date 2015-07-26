@@ -24,8 +24,8 @@ Plugin 'scrooloose/nerdtree'
 " Syntax for Doccker files
 "Plugin 'ekalinin/Dockerfile.vim'
 " Vim Markdown syntax hightlight
-"Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " All of your Plugins must be added before the following line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -186,3 +186,18 @@ set textwidth=80
 " Encoding
 " ---------------------------
 set enc=utf-8
+
+" ---------------------------
+" Folding
+"   Like trulleberg, folding is primarily annoying. In some case 
+"   it could be helpful. So we behave like folding is disabled, but
+"   it's possible to enable it.
+" ---------------------------
+set foldenable
+set foldmarker={,}
+set foldmethod=marker
+" Don't autofold to much (still possible manually)
+set foldlevel=100
+" Don't open folds when searching or undoing stuff
+set foldopen-=search
+set foldopen-=undo
