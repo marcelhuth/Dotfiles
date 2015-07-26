@@ -82,28 +82,107 @@ set nosol
 " UI Settings
 " ---------------------------
 
-set autoindent
-set smartindent
+" Only in GUI mode: Do not add linespace
+set lsp=0
+" Turn on wildmenu. Command completition
+set wildmenu
+set wildmode=list:longest
+" Do not complete the following:
+set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*.jpg,*.gif,*.png
+" Show current position at the bottom
+set ruler
+" Command prompt is 1 line height
+set cmdheight=1
+" Show line numbering
+set number
+" Let BS work like in other apps
+set backspace=indent,eol,start
+" Cursor keys wrap to next line
+set whichwrap+=<,>,[,]
+" Enable the mouse everywhere
+set mouse=a
+" Shorter messages, see :help 'shortmess
+set shortmess=atI
+" Always report changed lines
+set report=0
+" Be quiet
+set noerrorbells
+" Show tabs, white-spaces and so on
+set list
+set listchars=tab:»·,trail:·,precedes:«,extends:»
+" Put new split windows below / right to the current one
+" Show matching brackets for 5/100 seconds (default)
+set showmatch
+set mat=5
+" Do not hightlight all search results
+set nohlsearch
+" Do hightlight as you type the search phrase
+set incsearch
+" Keep 5 lines above and below the cursor when moving
+set scrolloff=5
+" Do not blink
+set novisualbell
+" Always show status line
+set laststatus=2
 
-set tabstop=2
+" ---------------------------
+" Split settings
+" ---------------------------
+
+set splitbelow
+set splitright
+" Remap some keys to get the navigation easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" ---------------------------
+" Indention settings
+" ---------------------------
+set autoindent
+set nosmartindent
+" C-sytel indention
+set cindent
+" Use what is in the file before when changing indention
+set copyindent
+" Use what is in the file before when changing indention
+set preserveindent
+" Round indention to multiples of shiftwidth when using > or <
+set shiftround
+" Use defined filetype indention
+filetype plugin indent on
+
+" Set text formatting (default), see :help 'fo
+set formatoptions=tcq
 set softtabstop=2
 set shiftwidth=2
-set shiftround
-set smarttab
-set noexpandtab
+set tabstop=2
+" Use spaces instead of tabs
+set expandtab
 
-set showmatch
+" Wrap lines
+set wrap
 
-set ruler
+" Ignore case when searching
+set ignorecase
+" If there are caps in the search string, use noignorecase
+set smartcase
+" Improve autocomplete
+set completeopt=menu,longest,preview
+" Mark current cursor line (cul) or cursor column (cuc)
+"set cuc
+"set cul
+" Set the textwidth for the soft wrap (tw)
+set textwidth=80
 
-set hls
+" ---------------------------
+" Spell checking
+" ---------------------------
+"set spell
+"set spelllang=de_20,en_us
 
-set incsearch
-
-set number
-
-set display=lastline
-
-set shell=/bin/bash
-
-set showfulltag
+" ---------------------------
+" Encoding
+" ---------------------------
+set enc=utf-8
