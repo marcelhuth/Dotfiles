@@ -18,4 +18,8 @@
 Thumbs.db
 Desktop.ini
 # NERDtree temp files
-.netrwhist
+vim/.netrwhist
+# VIM bundle files, are installed from VIM
+vim/bundle/
+# VIM spell-checking files
+vim/spell/
