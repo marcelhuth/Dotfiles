@@ -178,10 +178,22 @@ set textwidth=80
 
 " ---------------------------
 " Spell checking
+"  Spellchecking works with the automatically downloaded files.
+"  If there is a problem with files (VIM error message during startup
+"  on a Mac, please rm /usr/share/vim/vim73/spell/en.* files and
+"  let VIM download the files to ~/.vim/spell automatically.
 " ---------------------------
+" Do not automatically enable spell checking for all files
 "set spell
-"set spelllang=de_20,en_us
-
+" Set spell language to English (US) and German (new)
+set spelllang=en_us,de_20
+" Enable spellchecking for markdown, txt and tex files automatically
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.txt set filetype=text
+autocmd BufRead,BufNewFile *.tex set filetype=tex
+autocmd FileType markdown setlocal spell
+autocmd FileType text setlocal spell
+autocmd FileType tex setlocal spell
 " ---------------------------
 " Encoding
 " ---------------------------
