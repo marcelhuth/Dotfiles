@@ -7,3 +7,4 @@
 	email = marcelhuth@users.noreply.github.com
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore_global
