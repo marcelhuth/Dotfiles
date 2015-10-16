@@ -25,7 +25,13 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'ekalinin/Dockerfile.vim'
 " Vim Markdown syntax hightlight
 Plugin 'godlygeek/tabular'
+" Vim markdown syntax highlighting
 Plugin 'plasticboy/vim-markdown'
+" Git plugins
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+" Better status line
+Plugin 'bling/vim-airline'
 " All of your Plugins must be added before the following line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -213,3 +219,15 @@ set foldlevel=100
 " Don't open folds when searching or undoing stuff
 set foldopen-=search
 set foldopen-=undo
+
+" ---------------------------
+"  Airline
+" ---------------------------
+" Enable usage of Powerline fonts, I use "Hacks" which works fine
+" on the Mac
+let g:airline_powerline_fonts = 1
+" Enable the git branch and hunks outputs in airline
+let g:airline#extensions#hunks#enabled=1
+let g:airline#extensions#branch#enabled=1
+" Disable the whitespace checking
+let g:airline#extensions#whitespace#enabled=0
