@@ -17,3 +17,5 @@
 ._*
 Thumbs.db
 Desktop.ini
+# VIM Swap files
+*.swp
