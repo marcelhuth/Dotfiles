@@ -231,3 +231,5 @@ let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#branch#enabled=1
 " Disable the whitespace checking
 let g:airline#extensions#whitespace#enabled=0
+" Enable tab bar extension
+let g:airline#extensions#tabline#enabled = 1
