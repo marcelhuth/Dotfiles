@@ -80,6 +80,9 @@ EOT
 export PATH=/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/git/bin:$PATH
 
 # Complete additional commands
+# Complete git commands
+source ~/.git-completion.bash
+# Complete aws commands
 # Works for the Mac only
 complete -C '/Library/Frameworks/Python.framework/Versions/3.4/bin/aws_completer' aws
 
