@@ -71,6 +71,8 @@ syntax enable
 " Light background for Solarized theme
 set background=light
 colorscheme solarized
+" Enable background toggling for solarized theme
+call togglebg#map("<F5>")
 
 " ---------------------------
 " General Settings
