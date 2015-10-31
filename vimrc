@@ -30,6 +30,8 @@ Plugin 'plasticboy/vim-markdown'
 " Git plugins
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+" Syntax highlight, indention for Puppet language
+Plugin 'rodjek/vim-puppet'
 " Better status line
 Plugin 'bling/vim-airline'
 " All of your Plugins must be added before the following line
