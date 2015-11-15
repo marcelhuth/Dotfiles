@@ -8,7 +8,6 @@
 #  https://github.com/trulleberg/Dotfiles
 #  https://github.com/mathiasbynens/dotfiles
 
-# TODO: Implement check if aws CLI is installed
 # TODO: Check if git is installed before using it.
 
 # Color settings
@@ -17,6 +16,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	#Add colors
 	export CLICOLOR=1
 	export LSCOLORS=exfxcxdxbxegedabagacad
+	export GREP_OPTIONS='--color=auto'
 elif [ $(uname) = "Linux" ]; then
 	export LS_OPTIONS=' --color=auto'
 	export GREP_OPTIONS='--color=auto'
@@ -47,10 +47,18 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 # Alias definitions
-alias ls='ls -G'
+if [ "$(uname)" == "Darwin" ]; then
+	# There is no --color=auto parameter on MacOS, use -G instead
+	alias ls='ls -G'
+	alias ll='ls -FGlahp'
+elif [ $(uname) = "Linux" ]; then
+	# Fix for Ubuntu seems to not care about LSCOLORS set
+	alias ls='ls --color=auto'
+	alias ll='ls -Flahp --color=auto'
+fi
+# Useful other aliases
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias ll='ls -FGlahp'
 alias df='df -h'
 alias vi='vim'
 alias ..='cd ..' # Go up one directory
@@ -59,6 +67,8 @@ alias ...='cd ../..' # Go up two directories
 # New Functions for the Bash
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
+# Its only available on MacOS
+if [ "$(uname)" == "Darwin" ]; then
 cdf () {
   currFolderPath=$( /usr/bin/osascript <<EOT
     tell application "Finder"
@@ -74,18 +84,24 @@ EOT
   echo "cd to \"$currFolderPath\""
   cd "$currFolderPath"
 }
+fi
 
 # Path definition
-# Works for the Mac only
-export PATH=/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/git/bin:$PATH
+# Be save that git and homebrew is in the PATH
+export PATH=/usr/local/git/bin:/usr/local/bin:$PATH
 
 # Complete additional commands
 # Complete git commands
 source ~/.git-completion.bash
-# Complete aws commands
-# Works for the Mac only
-complete -C '/Library/Frameworks/Python.framework/Versions/3.4/bin/aws_completer' aws
+# Complete aws commands only of aws command are installed
+# For now MacOS only
+if [ `which aws` ]; then
+	complete -C '/Library/Frameworks/Python.framework/Versions/3.4/bin/aws_completer' aws
+fi
 
+#-----------------------------------------------
+# Functions for the prompt:
+#-----------------------------------------------
 # Determine if there is a Python virtualenv and present the details, if there is one.
 function python_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
