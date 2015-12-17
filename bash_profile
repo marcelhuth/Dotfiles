@@ -95,7 +95,7 @@ export PATH=/usr/local/git/bin:/usr/local/bin:$PATH
 source ~/.git-completion.bash
 # Complete aws commands only of aws command are installed
 # For now MacOS only
-if [ `which aws` ]; then
+if [ `which aws 2>/dev/null` ]; then
 	complete -C '/Library/Frameworks/Python.framework/Versions/3.4/bin/aws_completer' aws
 fi
 
