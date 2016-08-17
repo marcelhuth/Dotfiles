@@ -13,6 +13,9 @@
 # Color settings
 if [ "$(uname)" == "Darwin" ]; then
 	# Do something under Mac OS X platform
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 	#Add colors
 	export CLICOLOR=1
 	export LSCOLORS=exfxcxdxbxegedabagacad
