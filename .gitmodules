@@ -1,0 +1,21 @@
+[submodule "Colors/nord-vim"]
+	path = Colors/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim.git
+[submodule "Colors/nord-dircolors"]
+	path = Colors/nord-dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors.git
+[submodule "Colors/nord-iterm2"]
+	path = Colors/nord-iterm2
+	url = https://github.com/arcticicestudio/nord-iterm2.git
+[submodule "Colors/nord-notepadplusplus"]
+	path = Colors/nord-notepadplusplus
+	url = https://github.com/arcticicestudio/nord-notepadplusplus.git
+[submodule "Colors/nord-xfce-terminal"]
+	path = Colors/nord-xfce-terminal
+	url = https://github.com/arcticicestudio/nord-xfce-terminal.git
+[submodule "Colors/nord-gnome-terminal"]
+	path = Colors/nord-gnome-terminal
+	url = https://github.com/arcticicestudio/nord-gnome-terminal.git
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
