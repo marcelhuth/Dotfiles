@@ -36,6 +36,8 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'bling/vim-airline'
 " Airline Themes
 Plugin 'vim-airline/vim-airline-themes'
+" Northern colours
+Plugin 'arcticicestudio/nord-vim'
 " All of your Plugins must be added before the following line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -73,10 +75,11 @@ set t_Co=256
 " Enable syntax highlighting
 syntax enable
 " Light background for Solarized theme
-set background=light
-colorscheme solarized
+"set background=light
+"colorscheme solarized
+colorscheme nord
 " Enable background toggling for solarized theme
-call togglebg#map("<F5>")
+"call togglebg#map("<F5>")
 
 " ---------------------------
 " General Settings
